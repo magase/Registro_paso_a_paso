@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title th:text="#{DPer.title}"></title>
+		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+	</head>
+	<body>
+	
+		<div th:replace="fragments/Navegacion :: header"></div>
+		
+		<form action="DatosPersonales" method="POST">
+			<fieldset>
+				<legend th:text="#{DPer.legend}"></legend>		
+					<span th:text="#{DPer.name}"></span> <input name="nombre" id="nombre" th:value="${nombre}" />
+					<span th:text="#{DPer.secondName}"></span><input name="apellidos" id="apellidos" th:value="${apellidos}" /> <br />
+					<span th:text="#{DPer.date}"></span><input type="date" name="fechaNacimiento" th:value="${fechaNacimiento}" /> <br />
+					<span th:text="#{DPer.gen}"></span>
+					<th:block th:each="genero: ${listaGenerosOrdenada}">
+	    				<input type="radio" name="generoSeleccionado" th:id="${genero.value}" th:value="${genero.key}" th:checked="${genero.key == generoSeleccionado}"/>
+						<span th:text="${genero.value}"/>
+					</th:block>	
+					</th:block>
+					<br />
+					<span th:text="#{DPer.partner}"></span>
+					<input type="checkbox" name="casado" id="casado"value="CPH" th:checked="${casado}"/>
+					<span th:text="#{DPer.child}"></span>
+					<input type="checkbox" name="hijos" id="hijos"value="HJS" th:checked="${hijos}"/>
+					<br />
+					<span th:text="#{DPer.country}"></span>
+					<select name="paises">
+						<option th:each="pais : ${listaPaisesOrdenada}" th:value="${pais.key}" th:text="${pais.value}" th:selected="${pais.key == paises}">
+						</option>
+					</select>
+					<br />
+					<input type="submit" th:value="#{DPer.submit}" />
+			</fieldset>
+		</form>
+	</body>
+</html>
+
+

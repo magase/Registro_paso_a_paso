@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title th:text="#{DPer.registry}"></title>
+		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+	</head>
+	<body>
+		<div th:replace="fragments/Navegacion :: header"></div>
+		<form action="DatosProfesionales" method="POST">
+			<fieldset>
+				<legend th:text="#{DProf.legend}"></legend>
+					<span th:text="#{DProf.departament}"></span>
+					<select name="departamento">
+						<option th:each="dep : ${listaDepartamentos}" th:value="${dep.key}" th:text="${dep.value}"  th:selected="${dep.key == departamento}">
+						</option>
+					</select>
+				
+					<br/>
+					<span th:text="#{DProf.salary}"></span>
+					<input type="number" name="salario" id="salario" th:value="${salario}" /> <br />
+					<span th:text="#{DProf.comment}"></span>
+					<textarea name="comentarios" cols="40" rows="5" th:text="${comentarios}"></textarea> <br />
+					<input type="submit" th:value="#{DProf.submit}" />
+			</fieldset>
+		</form>
+	</body>
+</html>

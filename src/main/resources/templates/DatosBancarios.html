@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title th:text="#{DBan.registryBanck}"></title>
+		<link rel="stylesheet" th:href="@{/css/estilos.css}" />
+	</head>
+	<body>
+		<div th:replace="fragments/Navegacion :: header"></div>
+		<form action="DatosBancarios" method="POST">
+			<fieldset>
+				<legend th:text="#{DBan.legend}"></legend>	
+				<span th:text="#{DBan.count}"></span>
+				<input name="cuentaCorriente" id="cuentaCorriente" th:value="${cuentaCorriente}" /> <br />
+				<input type="submit" th:value="#{DBan.submit}" />
+			</fieldset>
+		</form>
+		
+	</body>
+</html>
